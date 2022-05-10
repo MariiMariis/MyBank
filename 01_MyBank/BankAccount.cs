@@ -58,6 +58,20 @@ namespace _01_MyBank
             var withdrawal = new Transaction(-amount, date, note);
             allTransactions.Add(withdrawal);
         }
+
+        public string GetAccountHistory()
+        {
+            var report = new StringBuilder();
+            
+            // Cabeçalho 
+            report.AppendLine("Date\t\tAmount\tNote");
+            foreach(var item in allTransactions)
+            {
+                // Linhas do relatório
+                report.AppendLine($"{item.Date.ToShortDateString()}\t{item.Amount}\t{item.Notes}");
+            }
+            return report.ToString();
+        }
     }
 }
 
